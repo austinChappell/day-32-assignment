@@ -17,36 +17,36 @@
       <div class="form-group">
         <label>Type:</label><br />
         <select name="style">
-          <option value="thermos">Thermos</option>
-          <option value="tumbler">Tumbler</option>
-          <option value="mug">Mug</option>
+          <option value="Thermos">Thermos</option>
+          <option value="Tumbler">Tumbler</option>
+          <option value="Mug">Mug</option>
         </select>
       </div>
       <div class="form-group">
         <label>Material:</label><br />
         <select name="material">
-          <option value="stainless_steel">Stainless Steel</option>
-          <option value="ceramic">Ceramic</option>
-          <option value="plastic">Plastic</option>
+          <option value="Stainless Steel">Stainless Steel</option>
+          <option value="Ceramic">Ceramic</option>
+          <option value="Plastic">Plastic</option>
         </select>
       </div>
       <div class="form-group">
         <label>Is this mug dishwasher safe?</label><br />
-        <input type="radio" name="isDishwasherSafe" value="true"> Yes<br />
-        <input type="radio" name="isDishwasherSafe" value="false"> No<br />
+        <input type="radio" name="isDishwasherSafe" value="true"> Yes
+        <input type="radio" name="isDishwasherSafe" value="false"> No
       </div>
       <div class="form-group">
         <label>Is this mug insulated?</label><br />
-        <input type="radio" name="isInsulated" value="true"> Yes<br />
-        <input type="radio" name="isInsulated" value="false"> No<br />
+        <input type="radio" name="isInsulated" value="true"> Yes
+        <input type="radio" name="isInsulated" value="false"> No
       </div>
       <div class="form-group">
         <label>How many ounces?</label><br />
         <select name="sizeInOunces">
-          <option value="small">6 to 8 ounces</option>
-          <option value="medium">8 to 12 ounces</option>
-          <option value="large">12 to 16 ounces</option>
-          <option value="extra_large">16 or more ounces</option>
+          <option value="6 to 8 oz">6 to 8 oz</option>
+          <option value="8 to 12 oz">8 to 12 oz</option>
+          <option value="12 to 16 oz">12 to 16 oz</option>
+          <option value="16 or more oz">16 or more oz</option>
         </select>
       </div>
       <div class="form-group">
@@ -57,7 +57,7 @@
     </form>
     <div class="">
       {{ #mugs }}
-      <h3>{{ name }}</h3>
+      <h3>{{ name }}</h3><a href="/edit/{{ _id }}">Edit</a>
       <ul>
         <li>{{ appearance.color }}</li>
         <li>{{ appearance.style }}</li>

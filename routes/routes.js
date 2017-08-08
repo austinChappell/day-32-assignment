@@ -44,12 +44,77 @@ router.post('/', (req, res) => {
   });
 });
 
-router.get('/edit', (req, res) => {
-  
+router.get('/edit/:id', (req, res) => {
+  let id = req.params.id;
+  let styleOptions = [
+    { value: 'Thermos', selected: false },
+    { value: 'Tumbler', selected: false },
+    { value: 'Mug', selected: false }
+  ];
+  let materialOptions = [
+    { value: 'Stainless Steel', selected: false },
+    { value: 'Ceramic', selected: false },
+    { value: 'Plastic', selected: false }
+  ];
+  let sizeOptions = [
+    { value: '6 to 8 oz' },
+    { value: '8 to 12 oz' },
+    { value: '12 to 16 oz' },
+    { value: '16 or more oz' }
+  ];
+  let dishwasherSafeOptions = [
+    { value: true, groupName: 'isDishwasherSafe', text: 'Yes' },
+    { value: false, groupName: 'isDishwasherSafe', text: 'No' }
+  ];
+  let insulatedOptions = [
+    { value: true, groupName: 'isInsulated', text: 'Yes' },
+    { value: false, groupName: 'isInsulated', text: 'No' }
+  ];
+
+
+  function getOptionsHTML(array, selectedValue) {
+    let html = '';
+    array.forEach((option) => {
+      if (option.value === selectedValue) {
+        html += `<option value="${ option.value }" selected>${ option.value }</option>\n`;
+      } else {
+        html += `<option value="${ option.value }">${ option.value }</option>\n`;
+      }
+    });
+    return html;
+  };
+
+  function getRadioHTML(array, selectedValue) {
+    let html = '';
+    array.forEach((option) => {
+      if (option.value === selectedValue) {
+        html += `<input type="radio" name="${ option.groupName }" value="${ option.value }" checked> ${ option.text }\n`;
+      } else {
+        html += `<input type="radio" name="${ option.groupName }" value="${ option.value }" /> ${ option.text }\n`;
+      }
+    });
+    return html;
+  };
+
+  Mug.findById(id, (err, mug) => {
+    if (err) {
+      console.log(err);
+    } else {
+      let style = getOptionsHTML(styleOptions, mug.appearance.style);
+      let material = getOptionsHTML(materialOptions, mug.appearance.material);
+      let size = getOptionsHTML(sizeOptions, mug.sizeInOunces);
+      let dishwasherSafe = getRadioHTML(dishwasherSafeOptions, mug.isDishwasherSafe);
+      let insulated = getRadioHTML(insulatedOptions, mug.isInsulated);
+      let characteristics = mug.uniqueCharacteristics.join('; ');
+      let data = { mug, style, material, size, dishwasherSafe, insulated, characteristics };
+      console.log(data.style);
+      res.render('edit', data);
+    }
+  });
 });
 
-router.put('/', (req, res) => {
-
+router.put('/edit/:id', (req, res) => {
+  let id = req.params.id;
   function isTrue(value) {
     if (value === 'true') {
       return true;
@@ -66,7 +131,7 @@ router.put('/', (req, res) => {
     style: req.body.style,
     material: req.body.material
   };
-  let newMug = new Mug({
+  let editMug = {
     name: req.body.name,
     appearance: {
       color: req.body.color,
@@ -77,11 +142,25 @@ router.put('/', (req, res) => {
     isInsulated: isTrue(req.body.isInsulated),
     sizeInOunces: req.body.sizeInOunces,
     uniqueCharacteristics: uniqueArr
+  };
+
+  Mug.update({ _id: id }, { $set: editMug }, (err, result) => {
+    if (err) {
+      console.log('ERROR=================', err);
+    } else {
+      res.redirect('/');
+    };
   });
-  newMug.save().then((result) => {
-    res.redirect('/');
-  }).catch((err) => {
-    throw err;
+});
+
+router.delete('/delete/:id', (req, res) => {
+  let id = req.params.id;
+  Mug.remove({ _id: id }, (err, result) => {
+    if (err) {
+      console.log(err);
+    } else {
+      res.redirect('/');      
+    }
   });
 });
 
