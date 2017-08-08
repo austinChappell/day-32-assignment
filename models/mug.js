@@ -6,6 +6,10 @@ const mugSchema = new Schema({
     type: String,
     required: true
   },
+  imageURL: {
+    type: String,
+    required: true
+  },
   appearance: {
     color: {
       type: String,

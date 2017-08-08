@@ -10,30 +10,26 @@
 
     <nav>
       <a href="/"><i class="fa fa-coffee" aria-hidden="true"></i></a>
-      <h1>Mugs Central</h1>
+      <h1><a href="/">Mugs Central</a></h1>
       <a class="add-link" href="/add"><i class="fa fa-plus" aria-hidden="true"></i>
 </a>
     </nav>
 
     <div class="container">
 
-      <div class="">
+      <div class="all-mugs">
+
         {{ #mugs }}
-        <h3><a href="/show/{{ _id }}">{{ name }}</a></h3>
-          <li>{{ appearance.color }}</li>
-          <li>{{ appearance.style }}</li>
-          <li>{{ appearance.material }}</li>
-          <li>{{ isDishwasherSafe }}</li>
-          <li>{{ isInsulated }}</li>
-          <li>{{ sizeInOunces }}</li>
-          <li>Unique Charactersistics:</li>
-          {{ #uniqueCharacteristics }}
-          <ul>
-            <li>{{ . }}</li>
-          </ul>
-          {{ /uniqueCharacteristics }}
-        </ul>
+
+        <a href="/show/{{ _id }}">
+          <div class="each-mug">
+            <h3>{{ name }}</h3>
+            <img src="{{ imageURL }}" />
+          </div>
+        </a>
+
         {{ /mugs }}
+
       </div>
 
     </div>

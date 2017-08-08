@@ -7,7 +7,8 @@ body {
 .container {
   width: 80%;
   max-width: 1000px;
-  margin: 0 auto; }
+  margin: 0 auto;
+  text-align: center; }
 
 nav {
   background-color: #2F343B;
@@ -21,10 +22,12 @@ nav {
     font-size: 46px; }
     nav .fa:hover {
       color: #703030; }
-  nav h1 {
+  nav h1, nav a {
     color: #FFE6CD;
     text-transform: uppercase;
     margin: 0; }
+    nav h1:hover, nav a:hover {
+      color: #703030; }
 
 .form-group {
   margin: 10px 0; }
@@ -35,5 +38,69 @@ a {
   text-transform: uppercase; }
   a:hover {
     color: #C77966; }
+
+.all-mugs {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; }
+  .all-mugs a {
+    font-size: 26px;
+    flex-basis: 20%;
+    border: 1px solid #2F343B;
+    margin: 10px;
+    padding: 20px;
+    text-align: center;
+    border-radius: 5px; }
+    .all-mugs a h3 {
+      margin: 5px; }
+    .all-mugs a img {
+      width: 100%; }
+
+ul {
+  padding-left: 0;
+  text-align: left; }
+  ul li {
+    list-style: none;
+    margin: 5px 0; }
+
+.single-mug h3 {
+  font-size: 36px;
+  text-transform: uppercase; }
+
+.single-image {
+  width: 40%;
+  float: left;
+  margin-right: 10%; }
+
+#delete-form {
+  display: inline; }
+
+#delete-button {
+  color: #C77966;
+  font-size: 20px;
+  text-transform: uppercase;
+  border: 2px solid #C77966;
+  background-color: #FFE6CD;
+  display: inline;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 5px 10px; }
+  #delete-button:hover {
+    background-color: #C77966;
+    color: #FFE6CD; }
+
+#edit-button {
+  color: #2F343B;
+  font-size: 20px;
+  text-transform: uppercase;
+  border: 2px solid #2F343B;
+  background-color: #FFE6CD;
+  display: inline;
+  cursor: pointer;
+  border-radius: 5px;
+  padding: 5px 10px; }
+  #edit-button:hover {
+    background-color: #2F343B;
+    color: #FFE6CD; }
 
 /*# sourceMappingURL=style.css.map */

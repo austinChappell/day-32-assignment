@@ -10,23 +10,24 @@
 
     <nav>
       <a href="/"><i class="fa fa-coffee" aria-hidden="true"></i></a>
-      <h1>Mugs Central</h1>
+      <h1><a href="/">Mugs Central</a></h1>
       <a class="add-link" href="/add"><i class="fa fa-plus" aria-hidden="true"></i>
 </a>
     </nav>
 
     <div class="container">
 
-      <div class="">
+      <div class="single-mug">
         <h3>{{ name }}</h3>
+        <img class="single-image" src="{{ imageURL }}" />
         <ul>
-          <li>{{ appearance.color }}</li>
-          <li>{{ appearance.style }}</li>
-          <li>{{ appearance.material }}</li>
-          <li>{{ isDishwasherSafe }}</li>
-          <li>{{ isInsulated }}</li>
-          <li>{{ sizeInOunces }}</li>
-          <li>Unique Charactersistics:</li>
+          <li><strong>COLOR:</strong> {{ appearance.color }}</li>
+          <li><strong>TYPE OF MUG:</strong> {{ appearance.style }}</li>
+          <li><strong>MATERIAL:</strong> {{ appearance.material }}</li>
+          <li><strong>DISHWASHER SAFE:</strong> {{ isDishwasherSafe }}</li>
+          <li><strong>INSULATED:</strong> {{ isInsulated }}</li>
+          <li><strong>SIZE:</strong> {{ sizeInOunces }}</li>
+          <li><strong>UNIQUE CHARACTERISTICS:</strong></li>
           {{ #uniqueCharacteristics }}
           <ul>
             <li>{{ . }}</li>
@@ -35,10 +36,10 @@
         </ul>
       </div>
 
-      <form action="/delete/{{ _id }}?_method=DELETE" method="post">
-        <input type="submit" value="Delete Mug" />
+      <form id="delete-form" action="/delete/{{ _id }}?_method=DELETE" method="post">
+        <button id="delete-button" type="submit" value="Delete Mug">Delete Mug</button>
       </form>
-      <a href="/edit/{{ _id }}">Edit</a>
+      <a id="edit-button" href="/edit/{{ _id }}">Edit</a>
       <ul>
 
     </div>

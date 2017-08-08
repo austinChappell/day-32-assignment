@@ -31,6 +31,7 @@ router.post('/add', (req, res) => {
   };
   let newMug = new Mug({
     name: req.body.name,
+    imageURL: req.body.imageURL,
     appearance: {
       color: req.body.color,
       style: req.body.style,
