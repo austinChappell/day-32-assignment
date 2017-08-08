@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Mugs</title>
+  </head>
+  <body>
+    <h1>Edit Mug</h1>
+    <form action="/edit/:id?_method=PUT" method="post">
+      <div class="form-group">
+        <label>Mug Name:</label><br />
+        <input type="text" name="name" value="{{ name }}" />
+      </div>
+      <div class="form-group">
+        <label>Color:</label><br />
+        <input type="text" name="color" value="{{ color }}" />
+      </div>
+      <div class="form-group">
+        <label>Type:</label><br />
+        <select name="style">
+          <option value="thermos">Thermos</option>
+          <option value="tumbler">Tumbler</option>
+          <option value="mug">Mug</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Material:</label><br />
+        <select name="material">
+          <option value="stainless_steel">Stainless Steel</option>
+          <option value="ceramic">Ceramic</option>
+          <option value="plastic">Plastic</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Is this mug dishwasher safe?</label><br />
+        <input type="radio" name="isDishwasherSafe" value="true"> Yes<br />
+        <input type="radio" name="isDishwasherSafe" value="false"> No<br />
+      </div>
+      <div class="form-group">
+        <label>Is this mug insulated?</label><br />
+        <input type="radio" name="isInsulated" value="true"> Yes<br />
+        <input type="radio" name="isInsulated" value="false"> No<br />
+      </div>
+      <div class="form-group">
+        <label>How many ounces?</label><br />
+        <select name="sizeInOunces">
+          <option value="small">6 to 8 ounces</option>
+          <option value="medium">8 to 12 ounces</option>
+          <option value="large">12 to 16 ounces</option>
+          <option value="extra_large">16 or more ounces</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label>Unique Characteristics (separate characteristics with semicolons)</label>
+        <input type="text" name="uniqueCharacteristics" placeholder="Separate with semicolons" />
+      </div>
+      <input type="submit" value="Create Mug" />
+    </form>
+    <div class="">
+      {{ #mugs }}
+      <h3>{{ name }}</h3>
+      <ul>
+        <li>{{ appearance.color }}</li>
+        <li>{{ appearance.style }}</li>
+        <li>{{ appearance.material }}</li>
+        <li>{{ isDishwasherSafe }}</li>
+        <li>{{ isInsulated }}</li>
+        <li>{{ sizeInOunces }}</li>
+        <li>Unique Charactersistics:</li>
+        {{ #uniqueCharacteristics }}
+        <ul>
+          <li>{{ . }}</li>
+        </ul>
+        {{ /uniqueCharacteristics }}
+      </ul>
+      {{ /mugs }}
+    </div>
+  </body>
+</html>
