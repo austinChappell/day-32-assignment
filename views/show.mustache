@@ -18,8 +18,8 @@
     <div class="container">
 
       <div class="">
-        {{ #mugs }}
-        <h3><a href="/show/{{ _id }}">{{ name }}</a></h3>
+        <h3>{{ name }}</h3>
+        <ul>
           <li>{{ appearance.color }}</li>
           <li>{{ appearance.style }}</li>
           <li>{{ appearance.material }}</li>
@@ -33,8 +33,13 @@
           </ul>
           {{ /uniqueCharacteristics }}
         </ul>
-        {{ /mugs }}
       </div>
+
+      <form action="/delete/{{ _id }}?_method=DELETE" method="post">
+        <input type="submit" value="Delete Mug" />
+      </form>
+      <a href="/edit/{{ _id }}">Edit</a>
+      <ul>
 
     </div>
   </body>

@@ -8,7 +8,11 @@ router.get('/', (req, res) => {
   });
 });
 
-router.post('/', (req, res) => {
+router.get('/add', (req, res) => {
+  res.render('add');
+});
+
+router.post('/add', (req, res) => {
   function isTrue(value) {
     if (value === 'true') {
       return true;
@@ -41,6 +45,18 @@ router.post('/', (req, res) => {
     res.redirect('/');
   }).catch((err) => {
     throw err;
+  });
+});
+
+router.get('/show/:id', (req, res) => {
+  let id = req.params.id;
+  Mug.findById(id, (err, mug) => {
+    if (err) {
+      console.log(err);
+    } else {
+      console.log(mug);
+      res.render('show', mug);
+    };
   });
 });
 
@@ -159,7 +175,7 @@ router.delete('/delete/:id', (req, res) => {
     if (err) {
       console.log(err);
     } else {
-      res.redirect('/');      
+      res.redirect('/');
     }
   });
 });

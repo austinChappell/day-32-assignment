@@ -1,0 +1,52 @@
+$color-primary: #2F343B;
+$color-secondary: #703030;
+$color-tertiary: #FFE6CD;
+$font-color-1: #C77966;
+$font-color-2: #703030;
+
+body {
+  background: $color-tertiary;
+  margin: 0;
+  font-family: sans-serif;
+  color: $color-primary;
+}
+
+.container {
+  width: 80%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+nav {
+  background-color: $color-primary;
+  padding: 20px 60px;
+  margin-bottom: 20px;
+  font-size: 26px;
+  display: flex;
+  justify-content: space-between;
+  .fa {
+    color: $color-tertiary;
+    font-size: 46px;
+    &:hover {
+      color: $color-secondary;
+    }
+  }
+  h1 {
+    color: $color-tertiary;
+    text-transform: uppercase;
+    margin: 0;
+  }
+}
+
+.form-group {
+  margin: 10px 0;
+}
+
+a {
+  color: $font-color-2;
+  text-decoration: none;
+  text-transform: uppercase;
+  &:hover {
+    color: $font-color-1;
+  }
+}

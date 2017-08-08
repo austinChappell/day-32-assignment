@@ -19,6 +19,7 @@ app.set('view engine', 'mustache');
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));
+app.use(express.static('public'));
 app.use('/', router);
 
 app.listen(port, () => {

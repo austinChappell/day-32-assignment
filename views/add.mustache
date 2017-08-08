@@ -17,50 +17,56 @@
 
     <div class="container">
 
-      <h1>Edit Mug</h1>
-      <form action="/edit/{{ mug._id }}?_method=PUT" method="post">
+      <form action="/add" method="post">
         <div class="form-group">
           <label>Mug Name:</label><br />
-          <input type="text" name="name" value="{{ mug.name }}" />
+          <input type="text" name="name" />
         </div>
         <div class="form-group">
           <label>Color:</label><br />
-          <input type="text" name="color" value="{{ mug.appearance.color }}" />
+          <input type="text" name="color" />
         </div>
         <div class="form-group">
           <label>Type:</label><br />
           <select name="style">
-            {{{ style }}}
+            <option value="Thermos">Thermos</option>
+            <option value="Tumbler">Tumbler</option>
+            <option value="Mug">Mug</option>
           </select>
         </div>
         <div class="form-group">
           <label>Material:</label><br />
           <select name="material">
-            {{{ material }}}
+            <option value="Stainless Steel">Stainless Steel</option>
+            <option value="Ceramic">Ceramic</option>
+            <option value="Plastic">Plastic</option>
           </select>
         </div>
         <div class="form-group">
           <label>Is this mug dishwasher safe?</label><br />
-          {{{ dishwasherSafe }}}
+          <input type="radio" name="isDishwasherSafe" value="true"> Yes
+          <input type="radio" name="isDishwasherSafe" value="false"> No
         </div>
         <div class="form-group">
           <label>Is this mug insulated?</label><br />
-          {{{ insulated }}}
+          <input type="radio" name="isInsulated" value="true"> Yes
+          <input type="radio" name="isInsulated" value="false"> No
         </div>
         <div class="form-group">
           <label>How many ounces?</label><br />
           <select name="sizeInOunces">
-            {{{ size }}}
+            <option value="6 to 8 oz">6 to 8 oz</option>
+            <option value="8 to 12 oz">8 to 12 oz</option>
+            <option value="12 to 16 oz">12 to 16 oz</option>
+            <option value="16 or more oz">16 or more oz</option>
           </select>
         </div>
         <div class="form-group">
           <label>Unique Characteristics (separate characteristics with semicolons)</label>
-          <input type="text" name="uniqueCharacteristics" value="{{ characteristics }}" />
+          <input type="text" name="uniqueCharacteristics" placeholder="Separate with semicolons" />
         </div>
         <input type="submit" value="Create Mug" />
       </form>
-
-
     </div>
   </body>
 </html>
