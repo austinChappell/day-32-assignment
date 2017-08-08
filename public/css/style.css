@@ -55,6 +55,8 @@ a {
       margin: 5px; }
     .all-mugs a img {
       width: 100%; }
+    .all-mugs a:hover {
+      background-color: #F2DAC2; }
 
 ul {
   padding-left: 0;
