@@ -74,8 +74,17 @@ ul {
   float: left;
   margin-right: 10%; }
 
-#delete-form {
-  display: inline; }
+form {
+  font-size: 20px; }
+
+input, select {
+  font-size: 18px;
+  padding: 4px;
+  margin: 5px 0 10px; }
+
+#delete-form, #delete-form + a {
+  float: left;
+  margin-right: 10px; }
 
 #delete-button {
   color: #C77966;
